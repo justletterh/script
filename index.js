@@ -3,7 +3,7 @@ const div=()=>{console.log("-".repeat(process.stdout.columns));};
 
 function clean() {
   let blank=()=>{};
-  exec("rm -f ./coffeescript.js ./typescript.js",blank);
+  exec("rm -f ./coffeescript.js ./typescript.js ./livescript.js",blank);
 }
 
 function fin() {
@@ -20,7 +20,9 @@ function init() {
   return new Promise(resolve => {
     exec("npx tsc --outFile ./typescript.js ./typescript.ts",()=>{
       exec("npx coffee -c ./coffeescript.coffee",()=>{
-        resolve(0);
+        exec("npx lsc -c ./livescript.ls",()=>{
+          resolve(0);
+        });
       });
     });
   });
@@ -31,6 +33,7 @@ function main() {
     require("./javascript.js");
     require("./typescript.js");
     require("./coffeescript.js");
+    require("./livescript.js");
 
     fin();
   });
