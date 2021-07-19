@@ -1,6 +1,6 @@
-log = (s) !-> console.log s
+log = (s) !-> console.log s;
 
 main = !->
-  log "LiveScript"
+  log "LiveScript";
 
-main()
+main();
